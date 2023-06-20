@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+{% block table %}
+
+<div class = "signup-header">
+  <h2> Compare the EV </h2>
+</div>
+
+<form action="/add_compare_EV" method="post">
+  {% for EV in EV %}
+    <input type="checkbox" name="input_cars" value="{{EV.id}}">
+      EV {{loop.index-1}}<br/>
+    <a href="/View_vehicle/{{EV.id}}"> Name:{{EV['name']}}</a>
+      Manufacturer:{{EV['manufacturer']}} </br>
+      Cost:{{EV['cost']}} </br>
+      <br/>
+  {% endfor %}
+  <input type="submit" name="compare" value="compare">
+</form>
+{% endblock %}

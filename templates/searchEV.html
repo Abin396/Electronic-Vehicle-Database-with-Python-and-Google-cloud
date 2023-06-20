@@ -1,0 +1,114 @@
+
+{% extends "home.html" %}
+{% block table %}
+<form  action="/searchEV" method="post">
+    <section class="twelve">
+      <div class="signup-container">
+          <h3>Search Electronic Vehicle Details</h3>
+          <div class="signup-row">
+              <div class="signup-col1">
+                  <label class="signup-label">Vehicle Name</label>
+              </div>
+              <div class="signup-col2">
+                  <input class="signup-input" type="text" name="name">
+              </div>
+          </div>
+          <div class="signup-row">
+              <div class="signup-col1">
+                  <label class="signup-label">Manufacture</label>
+              </div>
+              <div class="signup-col2">
+                  <input class="signup-input" type="text" name="manufacturer">
+              </div>
+          </div>
+          <div class="signup-row">
+              <div class="signup-col1">
+                  <label class="signup-label" >Year</label>
+              </div>
+              <div class="signup-col2">
+                  <input class="signup-input" type="number" name="year"  min="1993" max="2022" >
+              </div>
+          </div>
+          <div class="signup-row">
+              <div class="signup-col1">
+                  <label class="signup-label" >Battery Size (Kwh):</label>
+              </div>
+              <div class="signup-col2">
+                  <input class="signup-input" type="number" name="battery" min="28" max="200" >
+              </div>
+          </div>
+          <div class="signup-row">
+              <div class="signup-col1">
+                  <label class="signup-label" >WLTP range (Km)</label>
+              </div>
+              <div class="signup-col2">
+                <input class="signup-input" type="number" name="range" >
+              </div>
+          </div>
+          <div class="signup-row">
+              <div class="signup-col1">
+                  <label class="signup-label">Cost($)</label>
+              </div>
+              <div class="signup-col2">
+                  <input class="signup-input" type="number" name="cost" min="2000" max="20000">
+              </div>
+          </div>
+          <div class="row">
+              <div class="signup-col1">
+                  <label class="signup-label" >Power</label>
+              </div>
+              <div class="signup-col2">
+                <input class="signup-input" type="number" name="power" min="160" max="420">
+              </div>
+          </div>
+          <div class="button">
+              <input class="signup-input" type="submit" value="Submit" id="btn1">
+          </div>  
+      </div>  
+  </section>
+</form>
+
+<section class ="box1" >
+    {% for EV in EV %}
+    <section class ="box2">
+        
+        <table>
+            <h4>EV {{ loop.index - 1 }}</h4>
+            <tr>
+              <td>Vehicle Name</td>
+              <td>{{EV.name}}</td>
+            </tr>
+            <tr>
+              <td>Manufacturer</td>
+              <td>{{EV.manufacturer}}</td>
+            </tr>
+            <tr>
+              <td>Year</td>
+              <td>{{EV.year}}</td>
+            </tr>
+            <tr>
+              <td>Battery Size (Kwh):</td>
+              <td>{{EV.battery}}</td>
+            </tr>
+            <tr>
+              <td>WLTP range (Km)</td>
+              <td>{{EV.range}}</td>
+            </tr>
+            <tr>
+              <td>Cost($)</td>
+              <td>{{EV.cost}}</td>
+            </tr>
+            <tr>
+              <td>power</td>
+              <td>{{EV.power}}</td>
+            </tr>
+          </table>
+    </section>
+    {% endfor %}
+</section>
+
+{% endblock %}
+
+
+
+

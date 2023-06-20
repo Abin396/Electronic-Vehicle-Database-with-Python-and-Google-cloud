@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% block table %}
+<h3>List of Electronic Vehicle</h3>
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Vehicle Name</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for EV in EV %}
+  <tr>
+    <td><a href="/View_vehicle/{{EV.id}} "> {{EV.name}} </a></td>
+    <td><a href="/delete_EV/{{EV.id}}" style="color: red;"> X </a></td>
+  </tr>
+  {% endfor %}
+</tbody>
+{% endblock %}
+    
+

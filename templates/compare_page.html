@@ -1,0 +1,40 @@
+{% extends "home.html" %}
+{% block table %}
+
+
+<h1>EV Compare Page </h1>
+
+        <p id="#p14"><a href="/add_compare_EV"> Select Cars to Compare</a></p>
+        {% for EV in EV_list %}
+        {{EV.name}}
+        {% if max_WLTP_range == EV.range|float %}
+        <p style='background:green'>{{EV.range}}</p>
+        {% elif min_WLTP_range == EV.range|float %}
+        <p style='background:red'>{{EV.range}}</p>
+        {% else %}
+        <p>{{EV.range}}</p>
+        {%endif%}
+        {% if max_power == EV.power|float %}
+        <p  style='background:green'>{{EV.power}}</p>
+        {% elif min_power == EV.power|float %}
+        <p style='background:red'>{{EV.power}}</p>
+        {% else %}
+        <p>{{EV.power}}</p>
+        {%endif%}
+        {% if max_battery_size == EV.battery|float %}
+        <p  style='background:green'>{{EV.battery}}</p>
+        {% elif min_battery_size == EV.battery|float %}
+        <p style='background:red'>{{EV.battery}}</p>
+        {% else %}
+        <p>{{EV.battery}}</p>
+        {%endif%}
+        {% if max_cost == EV.cost|float %}
+        <p  style='background:red'>{{EV.cost}}</p>
+        {% elif min_cost == EV.cost|float %}
+        <p style='background:green'>{{EV.cost}}</p>
+        {% else %}
+        <p>{{EV.cost}}</p>
+        {%endif%}
+        {% endfor %}
+
+{% endblock %}

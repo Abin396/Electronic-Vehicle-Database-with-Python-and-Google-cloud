@@ -1,0 +1,74 @@
+{% extends "home.html" %}
+{% block table %}
+
+<div class= "signup-header">
+  <h2>Details Electronic vehicle </h2>
+</div>
+
+    <div class ="box2">
+        
+      <table>
+        <thead>
+            <tr>
+                <th>Vehicle Name</th>
+                <th>Manufacturer</th>
+                <th>Year</th>
+                <th>Battery Size</th>
+                <th>WLTP range (Km)</th>
+                <th>Cost($)</th>
+                <th>power</th>
+  
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{EV.name}}</td>
+                <td>{{EV.manufacturer}}</td>
+                <td>{{EV.year}}</td>
+                <td>{{EV.battery}}</td>
+                <td>{{EV.range}}</td>
+                <td>{{EV.cost}}</td>
+                <td>{{EV.power}}</td>
+            </tr>    
+        </tbody>
+      </table>
+    </div>
+
+<div class= "signup-header">
+  <h2> Reviews </h2>
+</div>
+  <form action="/EVupdate/{{EV.id}}" method="post">
+    <h3> Rate from 1-10 </h3>
+    <input type="number" name="rating" min="1" max="10">
+    <input type="textfield" name="text1" id="text1" placeholder="Enter your reviews here ">
+    <input type="submit" value="Send Feedback">
+
+  </form>
+  {% for review in EV.review_list %}
+  {% if review %}
+  {{review.username}}
+  {{review.reviewbox}}
+  {{review.rating}}
+  {% endif %}
+  {{EV.avg_r}}
+  {% endfor %}
+
+
+  
+<div class = "signup-header">
+  <h2> Edit </h2>
+</div>
+ <form action="/EVupdate/{{EV.id}}" method="post">
+  <input type="number" name="id" value="{{ EV.id }}" hidden="True"><br>
+ <p id="p14">Name</p><input type="text" name="name" value="{{EV.name}}" >
+ <p id="p14">Manufacturer</p><input type="text"  name="manufacturer" value="{{EV.manufacturer}}" >
+  <p id="p14">Year</p><input type="number" name="year" value="{{EV.year}}" ><br>
+  <p id="p14">Battery Size</p><input type="number"  name="battery" value="{{EV.battery}}" >
+  <p id="p14">WLTP Range</p><input type="number"  name="range" value="{{EV.range}}" >
+  <p id="p14">Cost</p><input type="number"  name="cost" value="{{EV.cost}}" >
+  <p id="p14">Power</p><input type="number"  name="power" value="{{EV.power}}" ><br>
+  <br>
+  <input id="b14" type="submit" >
+</form> 
+
+{% endblock %} 

@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+{% block table %}
+
+<form action="/EVupdate/{{EV.id}}" method="post">
+
+    <input type="number" name="id" value="{{ EV.id }}" hidden="True">
+    <input type="text" name="name" value="{{EV.name}}" >
+    <input type="text"  name="manufacturer" value="{{EV.manufacturer}}" >
+    <input type="number" name="year" value="{{EV.year}}" >
+    <input type="number"  name="battery" value="{{EV.battery}}" >
+    <input type="number"  name="range" value="{{EV.range}}" >
+    <input type="number"  name="cost" value="{{EV.cost}}" >
+    <input type="number"  name="power" value="{{EV.power}}" >
+    <input type="submit" >
+  </form>
+{% endblock %}
+    
